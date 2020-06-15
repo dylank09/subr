@@ -1,0 +1,55 @@
+.App {
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading-search-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subr-heading {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: xxx-large;
+  color: #FF4301;
+  background-color: #FFFFFF;
+  position: relative;
+  margin: 0px;
+  float: left;
+  padding: 0px 10px 0px 10px;
+}
+
+.search-form{
+  min-height: 10vh;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+
+.search-bar:focus {
+  width: 220px;
+  transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search-bar:hover {
+  border-color: lightslategray;
+}
+
+.search-bar {
+  width: 60px;
+  padding: 8px;
+  border-color: white;
+}
+
+.search-button {
+  height: 35px;
+  width: 35px;
+  background-color: lightslategray;
+  border: none;
+}
+
