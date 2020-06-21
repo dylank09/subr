@@ -5,11 +5,13 @@ import './App.css';
 
 const App = () => {
 
-  let subreddit = ""
-  let limit = 10;
+  let subreddit = "";
 
+  const[origPosts, setOrigPosts] = useState([]);
   const[posts, setPosts] = useState([]);
   const[search, setSearch] = useState("");
+  const[limit] = useState(50);
+  const[disableButtons, setDisableButtons] = useState(true);
 
   const getPosts = async () => {
 
@@ -21,10 +23,11 @@ const App = () => {
     .then(res => res.json())                //converts the result to json format
     
     .then( data => {
+
       data = data.data.children.map(data => data.data);
       console.log(data);
-      setPosts(data);
-      
+      setOrigPosts(data); 
+      setPosts(data.slice(0, 10));
 
     })
 
@@ -36,15 +39,23 @@ const App = () => {
     setSearch(e.target.value);
   };
 
-  const getSubreddit = e => {
+  const getSubreddit = async e => {
     e.preventDefault();
+    setDisableButtons(false);
     subreddit = search;
-    console.log("Search: " + subreddit);
-    getPosts();
-    // setSearch("");
+    await getPosts();
   };
 
+  const pageSelect = (page) => {
 
+    var start = (page-1)*10
+    setPosts(origPosts.slice(start, start+10));
+    window.scroll(0, 0)
+  }
+
+  // useEffect(() => {
+  //   getSubreddit()
+  // }, [limit] )
 
   return(
     <div className="App">
@@ -72,6 +83,7 @@ const App = () => {
                   text={post.selftext}
                   author={post.author}
                   score={post.score} 
+                  url={post.url}
                   posthint={post.posthint}
                   image={post.preview ? 
                     post.preview.images[0].source.url.split('amp;').join(''):''}
@@ -79,7 +91,14 @@ const App = () => {
           )} 
         </Masonry>
       </div>
-                
+      <form hidden={disableButtons} className="page-buttons">
+        Page 
+        <button className="b1" type="button" onClick={() => pageSelect(1)}>1</button> 
+        <button className="b2" type="button" onClick={() => pageSelect(2)}>2</button> 
+        <button className="b3" type="button" onClick={() => pageSelect(3)}>3</button> 
+        <button className="b4" type="button" onClick={() => pageSelect(4)}>4</button> 
+        <button className="b5" type="button" onClick={() => pageSelect(5)}>5</button>     
+      </form>
     </div>
     
   )
