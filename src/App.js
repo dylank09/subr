@@ -64,7 +64,7 @@ const App = () => {
       <form className="search-form" onSubmit={getSubreddit}>
         <input className="search-bar"
                type="text"
-               placeholder="Search..."
+               placeholder="Search for a Subreddit here!"
                onChange={updateSearch}
                value={search}
         />

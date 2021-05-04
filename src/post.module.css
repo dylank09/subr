@@ -9,6 +9,9 @@
     background: lightslategray;
     max-width: 31%;
     min-width: 285px;
+    word-break: break-word;
+    overflow: hidden;
+    white-space: initial;
 }
 
 .image {
