@@ -92,7 +92,7 @@ const App = () => {
         </Masonry>
       </div>
       <form hidden={disableButtons} className="page-buttons">
-        Page 
+        Page: <br></br>
         <button className="b1" type="button" onClick={() => pageSelect(1)}>1</button> 
         <button className="b2" type="button" onClick={() => pageSelect(2)}>2</button> 
         <button className="b3" type="button" onClick={() => pageSelect(3)}>3</button> 

@@ -55,3 +55,12 @@
   border: none;
 }
 
+.page-buttons {
+  margin-left: 40%;
+  top: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 4%;
+  font-size: larger;
+  
+}
